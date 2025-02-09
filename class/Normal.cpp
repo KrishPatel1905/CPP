@@ -44,4 +44,6 @@ void Display() {
     cout << "Department Name: " << t1.dep << endl;
     cout << "Subject Name: " << t1.subject << endl;
     cout<<  "Salary :"<<t1.Getsalary()<<endl;
+    cout<<"Thank you ";
+
 }
