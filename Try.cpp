@@ -1,87 +1,67 @@
 #include <iostream>
 using namespace std;
-
-class ManagementSystem {
-    int ProId;
-    char ProName[25];
-    int ProQuantity = 1;
-    int ProPrice;
-    int ProTotal = 1;
-    static int total;
+class student;
+class faculty
+{
+    int facultyid;
+    char facultyname[25];
 
 public:
-    void AddProduct();
-    void UpdateProduct(int id);
-    void DisplayProduct();
-    static void DisplayTotal();
+    void add_faculty_personal_data()
+    {
+        cin >> facultyid >> facultyname;
+    }
+    void add_math_marks(student &x);
 };
 
-int ManagementSystem::total = 0;
+class student
+{
+    int studentid, mathmark, cmark;
+    char studentname[25];
+    float percentage;
 
-void ManagementSystem::AddProduct() {
-    cout << "Enter the Product Id: ";
-    cin >> ProId;
-    cout << "Enter the Product Name: ";
-    cin >> ProName;
-    cout << "Enter the price of product: ";
-    cin >> ProPrice;
-
-    ProTotal = ProQuantity * ProPrice;
-    total += ProTotal;
+public:
+    friend void faculty::add_math_marks(student &x);
+    void add_student_personal_data()
+    {
+        cin >> studentid >> studentname;
+    }
+    void percentage()
+    {
+        percentage = (mathmark + cmark) / 2;
+    }
+    void display()
+    {
+        cout << studentid << mathmark << cmark << percentage;
+    }
+};
+void faculty ::add_math_marks(student &x)
+{
+    cin >> x.mathmark;
 }
 
-void ManagementSystem::UpdateProduct(int id) {
-    if (ProId == id) {
-        int x;
-        cout << "Enter the quantity of product: ";
-        cin >> x;
-        ProQuantity += x;
+int main()
+{
+    student s[5];
+    faculty f1, f2;
+    int i;
 
-        total -= ProTotal;
-        ProTotal = ProQuantity * ProPrice;
-        total += ProTotal;
-
-        cout << "Updated total price of product is: " << ProTotal << endl;
-    } else {
-        cout << "Product ID not found." << endl;
-    }
-}
-
-void ManagementSystem::DisplayProduct() {
-    cout << "Product ID: " << ProId
-         << ", Name: " << ProName
-         << ", Quantity: " << ProQuantity
-         << ", Price: " << ProPrice
-         << ", Total: " << ProTotal << endl;
-}
-
-void ManagementSystem::DisplayTotal() {
-    cout <<endl<< "Total price of all products: " << total << endl;
-}
-
-int main() {
-    int numProducts = 2;
-    ManagementSystem A[numProducts];
-
-    for (int i = 0; i < numProducts; i++) {
-        A[i].AddProduct();
-        cout << "--------------------" << endl;
+    for (i = 0; i < 5; i++)
+    {
+        s[i].add_student_personal_data();
     }
 
-    int id;
-    cout << "Enter the product ID you want to update: ";
-    cin >> id;
-    
-    for (int i = 0; i < numProducts; i++) {
-        A[i].UpdateProduct(id);
+    f1.add_faculty_personal_data();
+    f2.add_faculty_personal_data();
+    for (i = 0; i < 5; i++)
+    {
+        f1.add_math_marks(s[i]);
     }
-
-    cout << "\nAll Products Details:\n";
-    for (int i = 0; i < numProducts; i++) {
-        A[i].DisplayProduct();
+    for (i = 0; i < 5; i++)
+    {
+        s[i].percentage();
+        s[i].display();
     }
-
-    ManagementSystem::DisplayTotal();
 
     return 0;
 }
