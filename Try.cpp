@@ -1,67 +1,20 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-class student;
-class faculty
+template<typename Data> Data Maxvalue(Data d1,Data d2)
 {
-    int facultyid;
-    char facultyname[25];
-
-public:
-    void add_faculty_personal_data()
+    if(d1>d2)
     {
-        cin >> facultyid >> facultyname;
+        cout<<"The highest value is "<<d1<<endl;
     }
-    void add_math_marks(student &x);
-};
-
-class student
-{
-    int studentid, mathmark, cmark;
-    char studentname[25];
-    float percentage;
-
-public:
-    friend void faculty::add_math_marks(student &x);
-    void add_student_personal_data()
-    {
-        cin >> studentid >> studentname;
+    else{
+        cout<<"The hightest value is :"<<d2<<endl;
     }
-    void percentage()
-    {
-        percentage = (mathmark + cmark) / 2;
-    }
-    void display()
-    {
-        cout << studentid << mathmark << cmark << percentage;
-    }
-};
-void faculty ::add_math_marks(student &x)
-{
-    cin >> x.mathmark;
 }
-
 int main()
 {
-    student s[5];
-    faculty f1, f2;
-    int i;
+ cout<<Maxvalue<int>(15,30);
+ cout<<Maxvalue<float>(15.5,15.6);
+ cout<<Maxvalue<char>('A','B');
 
-    for (i = 0; i < 5; i++)
-    {
-        s[i].add_student_personal_data();
-    }
-
-    f1.add_faculty_personal_data();
-    f2.add_faculty_personal_data();
-    for (i = 0; i < 5; i++)
-    {
-        f1.add_math_marks(s[i]);
-    }
-    for (i = 0; i < 5; i++)
-    {
-        s[i].percentage();
-        s[i].display();
-    }
-
-    return 0;
+    
 }
