@@ -1,20 +1,31 @@
 #include<iostream>
 using namespace std;
-template<typename Data> Data Maxvalue(Data d1,Data d2)
+class temp
 {
-    if(d1>d2)
+    int a,b;
+    public :
+    void cal()
     {
-        cout<<"The highest value is "<<d1<<endl;
+        cin>>a;
+        cout<<endl;
+        cin>>b;
+        cout<<"the output is :"<<a+b;
+
     }
-    else{
-        cout<<"The hightest value is :"<<d2<<endl;
+    temp()
+    {
+        cout<<"Welcome to our program how can I help you"<<endl;
     }
-}
+    ~temp()
+    {
+        cout<<"\n.....bye sir||mam..... \n..... thank you..... \n..... vist again.....";
+    }
+
+};
 int main()
 {
- cout<<Maxvalue<int>(15,30);
- cout<<Maxvalue<float>(15.5,15.6);
- cout<<Maxvalue<char>('A','B');
-
+    temp a;
+    a.cal();
     
+    return 0;
 }
