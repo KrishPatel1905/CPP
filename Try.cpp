@@ -1,31 +1,43 @@
 #include<iostream>
+#include<string.h>
 using namespace std;
-class temp
+class Mangesystem
 {
-    int a,b;
-    public :
-    void cal()
+    int quantity;
+    int itemId;
+    int price;
+    string itemName;
+    public:
+    void AddItem();
+    void InAndDecreaseitem();
+    void displayItem();
+    Mangesystem()
     {
-        cin>>a;
-        cout<<endl;
-        cin>>b;
-        cout<<"the output is :"<<a+b;
+        cout<<"........Welcome to system ........";
+        price=0;
+        quantity=0;
+    }
+    Mangesystem(int id,string name,int p,int q)
+    {
+       itemId=id;
+       itemName=name;
+       price=p;
+       quantity=q;
+       cout<<"id no: "<<itemId<<" "<<"itemname :"<<itemName<<" "<<"item price:"<<price<<" "<<"item quantity:"<<quantity<<endl;
 
     }
-    temp()
-    {
-        cout<<"Welcome to our program how can I help you"<<endl;
-    }
-    ~temp()
-    {
-        cout<<"\n.....bye sir||mam..... \n..... thank you..... \n..... vist again.....";
-    }
 
+    
 };
 int main()
 {
-    temp a;
-    a.cal();
     
+    Mangesystem items[3] = {
+        Mangesystem(101, "Notebook", 200, 10),
+       Mangesystem(102, "Pen", 50, 20),
+        Mangesystem(103, "Eraser", 5, 10)
+    };
+
+
     return 0;
 }
