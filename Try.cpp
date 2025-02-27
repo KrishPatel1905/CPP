@@ -1,26 +1,24 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-class xyz
-{
- int a;
- float b;
- public :
-  void input()
-  {
-    cin>>this->a;
-    cin>>this->b;
 
-  }
-  void output()
-  {
-    cout<<a<<endl;
-    cout<<b;
-  }
-};
-int main()
-{ 
-    xyz *p;
-    p->input();
-    p->output();
+int main() {
+    int T;  // Number of test cases
+    cin >> T;
+    int n=1;
+    
+    while (n<=T) {
+        int X, Y;
+        cin >> X >> Y;  // Time taken by bike (X) and car (Y)
+        
+        if (X < Y) {
+            cout << "BIKE" << endl;
+        } else if (X > Y) {
+            cout << "CAR" << endl;
+        } else {
+            cout << "SAME" << endl;
+        }
+        n++;
+    }
+
     return 0;
 }
