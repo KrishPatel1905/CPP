@@ -71,7 +71,7 @@ int main()
 
     student s2(80,"pallavi",45,78,26);
     s2.displaydata();
-    
+   
     
 {
     student s3=s2;
