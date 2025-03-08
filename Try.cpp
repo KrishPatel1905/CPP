@@ -1,28 +1,18 @@
 #include<iostream>
+#include<string>
 using namespace std;
-class abc
-{
-    int a,b;
-    public :
-    void input()
-    {
-        cout<<"enter the value of a : ";
-        cin>>this->a;
-        cout<<"Enter the value of b:";
-        cin>>this->b;
-
-    }
-    void output ()
-    {
-        cout<<this ->a<<endl;
-        cout<<this ->b;
-
-    }
-};
 int main()
 {
-    abc a;
-    a.input();
-    a.output();
+    string s1="heet";
+    string s2="krish";
+int result =s1.compare(s2);
+if(result==0)
+{
+    cout<<"Both are same ";
+}
+else 
+{
+    cout<<"Both are not same ";
+}
     return 0;
 }
