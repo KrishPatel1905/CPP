@@ -14,12 +14,16 @@ class xyz
     {
         cin>>x;
         cin>>name;
-        cout<<", ";
+        
         cin>>n;
         cin>>st;
     }
     void data()
     {
+        cout<<x<<endl;
+        cout<<n<<", "<<name<<endl;
+        cout<<st<<endl;
+        cout<<endl;
         cout<<x<<","<<name<<","<<n<<","<<st;
     }
 };
