@@ -8,16 +8,14 @@ private:
     double bonus;
 
 public:
-    // Constructor with default bonus value
     Employee(string empName, double empSalary, double empBonus = 5000.0)
         : name(empName), basicSalary(empSalary), bonus(empBonus) {}
 
-    // Inline function to compute total salary
     inline double totalSalary() {
         return basicSalary + bonus;
     }
 
-    // Function to display employee details
+   
     void displayDetails() {
         cout << "Name: " << name << " | Basic Salary: " << basicSalary
              << " | Bonus: " << bonus << " | Total Salary: " << totalSalary() << endl;
@@ -29,7 +27,7 @@ int main() {
     cout << "Enter number of employees: ";
     cin >> numEmployees;
 
-    Employee* employees[10]; // Limiting array size to 10 for simplicity
+    Employee* employees[10]; 
 
     for (int i = 0; i < numEmployees; i++) {
         string name;
