@@ -1,51 +1,52 @@
-#include<iostream>
-#include<string>
+#include <iostream>
 using namespace std;
 
-class person {
-    string name;
-    int age;
+class Fuel {
+protected:
+    string fuelType;
 public:
-    person(string n, int A) {
-        name = n;
-        age = A;
+    Fuel(string type) {
+        fuelType = type;
     }
-
-    void DisplayP() {
-        cout << "Name: " << name << endl;
-        cout << "Age: " << age << endl;
+    void showFuel() {
+        cout << "Fuel Type: " << fuelType << endl;
     }
 };
 
-class employee : public person {
-    int EmpId;
+class Brand {
+protected:
+    string brandName;
 public:
-    employee(int id, string D, int K) : person(D, K) {
-        EmpId = id;
+    Brand(string name) {
+        brandName = name;
     }
-
-    void DisplayEmp() {
-        cout << "Employee Id: " << EmpId << endl;
-        DisplayP();
+    void showBrand() {
+        cout << "Brand Name: " << brandName << endl;
     }
 };
 
-class manager : public employee {
-    string Dep;
+class Car : public Fuel, public Brand {
 public:
-    manager(string a, int b, string c, int s) : employee(b, c, s) {
-        Dep = a;
-    }
+    Car(string type, string name) : Fuel(type), Brand(name) {}
 
-    void DisplayM() {
-        cout << "Department: " << Dep << endl;
-        DisplayEmp();
+    void showDetails() {
+        showBrand();
+        showFuel();
     }
 };
 
 int main() {
-    manager m("IT", 10, "KRish", 17);
-    m.DisplayM();
+    Car cars[3] = {
+        Car("Petrol", "Toyota"),
+        Car("Electric", "Tesla"),
+        Car("Diesel", "Ford")
+    };
+
+    for (int i = 0; i < 3; i++) {
+        cout << "Car " << i + 1 << " details:" << endl;
+        cars[i].showDetails();
+        cout << "----------------------" << endl;
+    }
 
     return 0;
 }
