@@ -1,17 +1,15 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-int main() {
-    int n, fact = 1;
-
-    cout << "Enter a number: ";
-    cin >> n;
-
-    for (int i = 1; i <= n; ++i) {
-        fact *= i;
+int main(){
+    int n;
+    cout<<"Enter The Number :: ";cin>>n;
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            if(i>=j) cout<<"* ";
+            else cout<<"  ";
+        }
+        cout<<endl;
     }
-
-    cout << "Factorial of " << n << " is " << fact << "." << endl;
-
     return 0;
 }
