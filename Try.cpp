@@ -1,15 +1,23 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-int main(){
-    int n;
-    cout<<"Enter The Number :: ";cin>>n;
-    for(int i=1;i<=n;i++){
-        for(int j=1;j<=n;j++){
-            if(i>=j) cout<<"* ";
-            else cout<<"  ";
-        }
-        cout<<endl;
+class Time {
+    int minutes;
+public:
+    Time(int m) {
+        minutes = m;
     }
+
+   
+    operator float() {
+        return minutes / 60.0; 
+    }
+};
+
+int main() {
+    Time t(60); 
+    float hours = t;  
+    
+    cout << "Time in hours: " << hours << endl;  
     return 0;
 }
