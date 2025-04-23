@@ -1,35 +1,38 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-
-template<typename T>
-T myint(T a, T b) {
-    return a + b;
-}
-
-int main() {
+int main()
+{
     int n;
-    cin >> n;
-
-    for (int i = 0; i < n; i++) {
-        string type;
-        cin >> type;
-
-        if (type == "int") {
-            int a, b;
-            cin >> a >> b;
-            cout << myint<int>(a, b) << endl;
-        } 
-        else if (type == "float") {
-            float a, b;
-            cin >> a >> b;
-            cout << myint<float>(a, b) << endl;
-        } 
-        else if (type == "string") {
-            string a, b;
-            cin >> a >> b;
-            cout << myint<string>(a, b) << endl;
-        }
+    cin>>n;
+    char ch[n];
+    char c[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>ch[i];
+        c[i]=ch[i];
     }
-
+    for(int i=0;i<n-1;i++)
+    {
+        for(int j=0;j<n - i - 1; j++)
+        {
+            if(ch[j]>ch[j+1])
+            {
+                char temp;
+                temp=ch[j];
+                ch[j]=ch[j+1];
+                 ch[j+1]=temp;
+            }
+            
+            
+        }
+       
+        
+    }
+    for(int i=0;i<n;i++)
+    {
+       cout<<ch[i];
+    }
+    
+        
     return 0;
 }
