@@ -7,12 +7,11 @@ int main()
     int count=0;
     string str;
     string st;
-    cin>>str;
-    cin>>st;
     counter=str.length();
     count=st.length();
     cout<<counter<<" "<<count<<endl;
-  
+   cin>>str;
+   cin>>st;
     for(int i=0;i<counter;i++)
     {
         cout<<str[i];
