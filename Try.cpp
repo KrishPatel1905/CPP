@@ -1,116 +1,34 @@
 #include <iostream>
-#include <vector>
-#include <string>
+#include <fstream>
+#include <cstring>
 using namespace std;
 
-class Author {
-private:
-    static int totalAuthors;
-    int authorID;
-    string name;
-    string specialization;
-
-public:
-    Author(string n, string s) {
-        authorID = ++totalAuthors;
-        name = n;
-        specialization = s;
-    }
-
-    void displayDetails() const {
-        cout << name << " [" << specialization << "]" << endl;
-    }
-
-    static int getTotalAuthors() {
-        return totalAuthors;
-    }
-
-    // Getter methods to access private members
-    string getName() const {
-        return name;
-    }
-
-    string getSpecialization() const {
-        return specialization;
-    }
-};
-
-int Author::totalAuthors = 0;
-
-class Book {
-private:
-    string title;
-    int baseTime;
-    int complexityLevel;
-    Author* assignedAuthor;
-
-public:
-    Book(string t, int bTime, int cLevel, Author* author = nullptr)
-        : title(t), baseTime(bTime), complexityLevel(cLevel), assignedAuthor(author) {}
-
-    int getTotalEstimatedTime() const {
-        return baseTime + (complexityLevel * 2);
-    }
-
-    void taskBreakdown(int timeLeft) const {
-        if (timeLeft <= 5) {
-            cout << timeLeft;
-            return;
-        }
-        cout << "5 ";
-        taskBreakdown(timeLeft - 5);
-    }
-
-    void displayBookDetails() const {
-        cout << "Book: " << title << endl;
-        if (assignedAuthor != nullptr) {
-            cout << "Assigned Author: ";
-            assignedAuthor->displayDetails(); // This will display name and specialization
-        } else {
-            cout << "Assigned Author: Not Assigned" << endl;
-        }
-
-        int totalTime = getTotalEstimatedTime();
-        cout << "Total Estimated Time: " << totalTime << endl;
-        cout << "Task Breakdown: ";
-        taskBreakdown(totalTime);
-        cout << endl;
-    }
-};
-
-class BookTracker {
-public:
-    static int totalAuthorsRegistered() {
-        return Author::getTotalAuthors();
-    }
-};
-
 int main() {
-    int n, m;
-    cin >> n;
-    vector<Author> authors;
-    for (int i = 0; i < n; ++i) {
-        string name, specialization;
-        cin >> name >> specialization;
-        authors.push_back(Author(name, specialization));
+    const int SIZE = 1000;
+    char* word = new char[SIZE];
+    ofstream file("put.txt");
+
+    if (!file) {
+        cout << "Error opening file!" << endl;
+        return 1;
     }
 
-    cin >> m;
-    vector<Book> books;
-    for (int i = 0; i < m; ++i) {
-        string title;
-        int baseTime, complexity, authorIndex;
-        cin >> title >> baseTime >> complexity >> authorIndex;
-       
-        Author* assignedAuthor = (authorIndex > 0 && authorIndex <= n) ? &authors[authorIndex - 1] : nullptr;
-        books.push_back(Book(title, baseTime, complexity, assignedAuthor));
+    cout << "Type something word by word (type 'exit' alone to finish):" << endl;
+
+    while (true) {
+        cin >> word;
+
+        if (strcmp(word, "exit") == 0) {
+            break;
+        }
+
+        file << word << ' '; // Save word to file with space
     }
 
-    for (const auto& book : books) {
-        book.displayBookDetails();
-    }
+    cout << "\nData saved to output.txt" << endl;
 
-    cout << "Total Authors Registered: " << BookTracker::totalAuthorsRegistered() << endl;
+    file.close();
+    delete[] word; // Free memory
 
     return 0;
 }
