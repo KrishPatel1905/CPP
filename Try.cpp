@@ -1,34 +1,33 @@
-#include <iostream>
-#include <fstream>
-#include <cstring>
+#include<iostream>
+#include<vector>
+#include<map>
 using namespace std;
+int main()
+{
+    map<string,float> m;
+// map with data
+map<string,float>m2={{"24CE073",9.2},{"24CE001",8.1}};
+//find data 
+cout<<m.size()<<endl;
+cout<<m2.size()<<endl;
+//fetch value of key
+cout<<"The TOTAL MARKS OF 24CE001 IS :"<<m2["24CE001"]<<endl;
+//intialvalue of data
+m2["24CE001"]=9.1;
+cout<<" NOW ,The TOTAL MARKS OF 24CE001 IS :"<<m2["24CE001"]<<endl;
 
-int main() {
-    const int SIZE = 1000;
-    char* word = new char[SIZE];
-    ofstream file("put.txt");
 
-    if (!file) {
-        cout << "Error opening file!" << endl;
-        return 1;
-    }
 
-    cout << "Type something word by word (type 'exit' alone to finish):" << endl;
+m2.insert({"24CE032",7.9});
+m2.insert({"24CE137",9.3});
 
-    while (true) {
-        cin >> word;
+//remove key
 
-        if (strcmp(word, "exit") == 0) {
-            break;
-        }
+m2.erase("24CE073");
 
-        file << word << ' '; // Save word to file with space
-    }
-
-    cout << "\nData saved to output.txt" << endl;
-
-    file.close();
-    delete[] word; // Free memory
-
+for(auto e: m2)
+{
+  cout<<":"<<e.first <<":"<<e.second<<endl ;
+}
     return 0;
 }
