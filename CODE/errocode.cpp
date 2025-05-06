@@ -5,11 +5,11 @@ using namespace std;
 int main() {
     double A = 10.0, X = 3.0, B = 20.0, Y = 6.0;
     
-    // Calculate speeds using division (with floating-point)
+   
     double aliceSpeed = A / X;
     double bobSpeed = B / Y;
 
-    // Display the calculated speeds with some precision
+  
     cout << "Alice's Speed: " << fixed << setprecision(7) << aliceSpeed << endl;
     cout << "Bob's Speed: " << fixed << setprecision(7) << bobSpeed << endl;
 
