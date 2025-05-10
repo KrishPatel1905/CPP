@@ -1,26 +1,13 @@
 #include <iostream>
-#include <iomanip> // For setting precision
+#include <vector>
+
 using namespace std;
 
 int main() {
-    double A = 10.0, X = 3.0, B = 20.0, Y = 6.0;
+    vector<int> v = {1, 2, 3};
+   vector <int> v1;
+   v=v1;
+  
     
-    // Calculate speeds using division (with floating-point)
-    double aliceSpeed = A / X;
-    double bobSpeed = B / Y;
-
-    // Display the calculated speeds with some precision
-    cout << "Alice's Speed: " << fixed << setprecision(7) << aliceSpeed << endl;
-    cout << "Bob's Speed: " << fixed << setprecision(7) << bobSpeed << endl;
-
-    // Check if the speeds are equal
-    if (aliceSpeed == bobSpeed) {
-        cout << "EQUAL" << endl;
-    } else if (aliceSpeed > bobSpeed) {
-        cout << "ALICE" << endl;
-    } else {
-        cout << "BOB" << endl;
-    }
-
     return 0;
-}
+} 
