@@ -1,33 +1,88 @@
 #include<iostream>
-#include<vector>
-#include<map>
 using namespace std;
+const int MAX=100;
+class account
+{
+  string name;
+  float balance;
+  float tran;
+      string transactionType[MAX];
+    float transactionAmount[MAX];
+    int txnCount;
+  
+  public :
+
+  void with(float am)
+  {
+    if(am>balance)
+    {
+      throw string("Invaild amount");
+    }
+    balance=balance-am;
+    transactionType[txnCount]="withdraw ";
+    transactionAmount[txnCount]=am;
+    txnCount++;
+
+  }
+  void depo(float am)
+  {
+    balance=balance+am;
+     transactionType[txnCount]="Deposite ";
+    transactionAmount[txnCount]=am;
+    txnCount++;
+    cout<<"Now BAlance is "<<balance;
+  }
+  void transition()
+  {
+    for (int i = 0; i < txnCount; i++)
+    {
+      /* code */
+      cout<<i+1<<"."<<transactionType[txnCount]<<":"<<transactionAmount[txnCount];
+    }
+    
+  }
+
+  
+};
+  void showError(string function, string error) {
+    cout << "[ERROR] in " << function << ": " << error << "\n";
+}
 int main()
 {
-    map<string,float> m;
-// map with data
-map<string,float>m2={{"24CE073",9.2},{"24CE001",8.1}};
-//find data 
-cout<<m.size()<<endl;
-cout<<m2.size()<<endl;
-//fetch value of key
-cout<<"The TOTAL MARKS OF 24CE001 IS :"<<m2["24CE001"]<<endl;
-//intialvalue of data
-m2["24CE001"]=9.1;
-cout<<" NOW ,The TOTAL MARKS OF 24CE001 IS :"<<m2["24CE001"]<<endl;
+  float amount;
+  account acc;
+  int ch;
 
-
-
-m2.insert({"24CE032",7.9});
-m2.insert({"24CE137",9.3});
-
-//remove key
-
-m2.erase("24CE073");
-
-for(auto e: m2)
-{
-  cout<<":"<<e.first <<":"<<e.second<<endl ;
-}
-    return 0;
-}
+   d: cout<<"1.Deposite amount \n2.Withdrwa amount\n3.transition histroy \n4.exit\n";
+  cout<<"Enter the choice :";
+  cin>>ch;
+   switch(ch)
+   {
+    case 1 :
+    cout<<"Enter the amount :";
+      cin>>amount;
+      acc.depo(amount);
+     goto d;
+   case 2 :
+   try{
+   cout<<"Enter the amount :";
+   cin>>amount;
+   acc.with(amount);
+     
+   }
+   catch(string msg){
+     showError("deposite",msg);
+   }
+   goto d;
+   case 3:
+    acc.transition();
+    goto d;
+    case 4:
+     cout<<"Thank you for visit our bsnking system ";
+    break;
+   default:
+  cout<<"Invaild";
+    break;
+   }
+  return 0;
+}    
