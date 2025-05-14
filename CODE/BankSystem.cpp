@@ -110,7 +110,7 @@ menu:
             cout << "Enter amount to withdraw: ";
             cin >> amount;
             try {
-                acc.withdraw(amount);
+                acc.withdraw(amount);          
             } catch (string msg) {
                 showError("withdraw", msg);
             }
