@@ -1,58 +1,41 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-class A // Base class
-{
-private:
-    int privdataA;    // visible only to class A
+void drawSpiral(int n) {
+    vector<vector<char>> grid(n, vector<char>(n, ' '));
+    int top = 0, bottom = n - 1, left = 0, right = n - 1;
+    char ch = '#';
 
-protected:
-    int protdataA;    // visible to A and derived classes
+    while (top <= bottom && left <= right) {
+        for (int i = left; i <= right; ++i)
+            grid[top][i] = ch;
+        ++top;
 
-public:
-    int pubdataA;     // visible to all
+        for (int i = top; i <= bottom; ++i)
+            grid[i][right] = ch;
+        --right;
 
-    void funct()
-    {
-        int a;
-        a = privdataA;   // OK
-        a = protdataA;   // OK
-        a = pubdataA;    // OK
+        for (int i = right; i >= left; --i)
+            grid[bottom][i] = ch;
+        --bottom;
+
+        for (int i = bottom; i >= top; --i)
+            grid[i][left] = ch;
+        ++left;
     }
-};
 
-class B : public A // publicly-derived class
-{
-public:
-    void funct()
-    {
-        int a;
-        // a = privdataA;   // Error: not accessible
-        a = protdataA;     // OK
-        a = pubdataA;      // OK
+    for (auto& row : grid) {
+        for (char c : row)
+            cout << c << ' ';
+        cout << '\n';
     }
-};
+}
 
-class C : private A // privately-derived class
-{
-public:
-    void funct()
-    {
-        int a;
-        // a = privdataA;   // Error: not accessible
-        a = protdataA;     // OK
-        a = pubdataA;      // OK
-    }
-};
-
-class D : protected A // protectedly-derived class
-{
-public:
-    void funct()
-    {
-        int a;
-        // a = privdataA;   // Error: not accessible
-        a = protdataA;     // OK
-        a = pubdataA;      // OK
-    }
-};
+int main() {
+    int n;
+    cout << "Enter size of spiral (odd number recommended): ";
+    cin >> n;
+    drawSpiral(n);
+    return 0;
+}
