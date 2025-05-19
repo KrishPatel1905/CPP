@@ -1,36 +1,18 @@
-#include<iostream>
+#include <iostream>
+#include <iomanip>
 using namespace std;
-class currency
-{
-    int rupee,paisa;
-    public :
-    void enter()
-    {
-        cout<<"Enter rupper and paisa:";
-        cin>>rupee;
-        cin>>paisa;
 
-    }
-    void show()
-    {
-        cout<<rupee<<"."<<paisa;
-    }
-    currency sum(currency b)
-    {
-        currency a;
-        a.rupee=rupee+b.rupee;
-        a.paisa=paisa+b.paisa;
-        return a;
+int main() {
+    int num = 42;
+    double pi = 3.14159;
 
-    }
-};
+    cout << "Number with width 5: " << setw(5) << num << endl;
+    cout << "Filled with *: " << setfill('*') << setw(5) << num << endl;
 
-int main()
-{
-    currency c1,c2,c3;
-    c1.enter();
-    c2.enter();
-    c3=c1.sum(c2);
-    c3.show();
+    cout << fixed << setprecision(2);
+    cout << "Pi with 2 decimals: " << pi << endl;
+
+    cout << boolalpha << true << " " << false << endl;
+
     return 0;
 }
