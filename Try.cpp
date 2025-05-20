@@ -1,18 +1,28 @@
 #include <iostream>
-#include <iomanip>
-using namespace std;
+#include <string>
 
 int main() {
-    int num = 42;
-    double pi = 3.14159;
+    std::string name;
+    int age;
 
-    cout << "Number with width 5: " << setw(5) << num << endl;
-    cout << "Filled with *: " << setfill('*') << setw(5) << num << endl;
+    // Input user name
+    std::cout << "Enter your name: ";
+    std::getline(std::cin, name);
 
-    cout << fixed << setprecision(2);
-    cout << "Pi with 2 decimals: " << pi << endl;
+    // Input user age
+    std::cout << "Enter your age: ";
+    std::cin >> age;
 
-    cout << boolalpha << true << " " << false << endl;
+    // Output greeting and years until 100
+    std::cout << "Hello, " << name << "!" << std::endl;
+
+    if (age < 100) {
+        std::cout << "You will turn 100 in " << (100 - age) << " years." << std::endl;
+    } else if (age == 100) {
+        std::cout << "Wow! You're 100 years old today!" << std::endl;
+    } else {
+        std::cout << "You turned 100 " << (age - 100) << " years ago!" << std::endl;
+    }
 
     return 0;
 }
