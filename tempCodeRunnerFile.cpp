@@ -14,6 +14,7 @@ public:
 
     
     BankAccount() {
+        cout<<"Hi welcome your system .......";
         name = "";
         balance = 0;
         txnCount = 0;
