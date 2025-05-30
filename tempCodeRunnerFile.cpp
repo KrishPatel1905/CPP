@@ -95,6 +95,8 @@ menu:
     cout << "5. Exit\n";
     cout << "Enter your choice: ";
     cin >> choice;
+    cout<<"Thank You ......";
+
 
     switch (choice) {
         case 1:
