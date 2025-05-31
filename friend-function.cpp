@@ -3,6 +3,7 @@ using namespace std;
 
 class student
 {
+  
     int studentid, mathmark, cmark;
     char studentname[25];
 public:
@@ -25,6 +26,7 @@ public:
 
 int main()
 {
+     cout<<"    ";
     student s[5];
     faculty f1 , f2;
     int i;
